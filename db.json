@@ -1,0 +1,24 @@
+{
+    "usuarios": [
+      { "id_usuario": 1, "nome": "JOSE", "email": "jose@gmail.com" },
+      { "id_usuario": 1, "nome": "CARLOS", "email": "CARLOS@gmail.com" },
+      { "id_usuario": 1, "nome": "ANA", "email": "ANA@gmail.com" },
+      { "id_usuario": 1, "nome": "MARIA", "email": "MARIA@gmail.com" },
+      { "id_usuario": 1, "nome": "CAIO", "email": "CAIO@gmail.com" },
+      { "id_usuario": 1, "nome": "GUILHERME", "email": "GUILHERME@gmail.com" }
+    ],
+    "hardwares": [
+      { "id_hardware": 1, "data_criado": "20/1/2022", "STATUS": 1 },
+      { "id_hardware": 2, "data_criado": "20/1/2022", "STATUS": 1 },
+      { "id_hardware": 3, "data_criado": "20/1/2022", "STATUS": 1 },
+      { "id_hardware": 4, "data_criado": "20/1/2022", "STATUS": 1 }
+    ],
+    "plantas": [
+        { "id_planta": 1 , "hardware": 1, "usuario":"jose" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":90 ,"REGAS":["2023-25-9 13:50:55","2023-20-9 16:30:55"]},
+        { "id_planta": 2 , "hardware": 2, "usuario":"CARLOS" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":47 ,"REGAS":["2023-25-9 13:50:55","2023-20-9 16:30:55"]},
+        { "id_planta": 3 , "hardware": 3, "usuario":"ANA" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":73 ,"REGAS":["2023-25-9 11:50:55","2023-20-9 12:30:55"]},
+        { "id_planta": 4 , "hardware": 4, "usuario":"MARIA" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":84 ,"REGAS":["2023-25-9 17:50:55","2023-20-9 16:34:55"]},
+        { "id_planta": 5 , "hardware": 4, "usuario":"MARIA" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":84 ,"REGAS":["2023-25-9 17:50:55","2023-20-9 16:34:55"]},
+        { "id_planta": 6 , "hardware": 4, "usuario":"MARIA" ,"NOME_PLANTA":"GIRASSOL" ,"BOMBA_STATUS":"0","REGA_TEMPO":5,"UMIDADE":84 ,"REGAS":["2023-25-9 17:50:55","2023-20-9 16:34:55"]}
+]
+  }
