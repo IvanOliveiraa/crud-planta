@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Voltar from './components/voltar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,26 +19,8 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <h1>ola mundo</h1>
-      {/* <nav>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/">Plantas</Link>
-            </li>
-            <li>
-              <Link href="/usuarios">Usuários</Link>
-            </li>
-            <li>
-              <Link href="/">Hardware</Link>
-            </li>
-            <hr />
-            
-          </ul>
-        </nav>  */}
         
+      
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-emerald-700 dark:focus:ring-gray-600">
    <span className="sr-only">Open sidebar</span>
    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +37,7 @@ export default function RootLayout({
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                </svg>
-               <span className="ml-3">Dashboard</span>
+               <span className="ml-3">Plantas</span>
             </Link>
             </li>
          <li>
@@ -75,10 +58,13 @@ export default function RootLayout({
          </li>
       </ul>
    </div>
+   
 </aside>
 
 <div className="p-4 sm:ml-64">
-   <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+<Voltar/>
+   <div className="p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-emerald-700">
+      
    {children}
       {/*<div className="grid grid-cols-3 gap-4 mb-4">
          <div className="flex items-center justify-center h-24 rounded bg-emerald-50 dark:bg-emerald-900">
