@@ -31,16 +31,9 @@
       "email": "GUILHERME@gmail.com"
     },
     {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
+      "nome": "ivan oliveira de souza",
+      "email": "FERNANDABARBOSAFBN00@GMAIL.COM",
       "id": 7
-    },
-    {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
-      "id": 8
-    },
-    {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
-      "id": 9
     }
   ],
   "hardwares": [

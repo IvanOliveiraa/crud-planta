@@ -12,8 +12,8 @@ params:{usuarioid : string};
 
     return(
     <>
-    <h2> Nome: {usuario.nome}</h2>
     <h3> Id: {params.usuarioid}</h3>
+    <h2> Nome: {usuario.nome}</h2>
     <h3> Email: {usuario.email}</h3>
 
 
