@@ -1,11 +1,6 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "nome": "JOSE",
-      "email": "jose@gmail.com"
-    },
-    {
       "id": 2,
       "nome": "CARLOS",
       "email": "CARLOS@gmail.com"
@@ -31,7 +26,7 @@
       "email": "GUILHERME@gmail.com"
     },
     {
-      "nome": "ivan oliveira de souza",
+      "nome": "IVAN",
       "email": "FERNANDABARBOSAFBN00@GMAIL.COM",
       "id": 7
     }

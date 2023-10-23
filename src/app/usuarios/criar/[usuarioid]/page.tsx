@@ -1,39 +1,53 @@
 "use client";
 import axios from 'axios'
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter,useParams } from 'next/navigation';
+import {getUsuarioPorId} from './../../services/get-usuario-por-id'
 
-type FormData = {nome:string;email:string;};
+type FormData = {
+nome:string;
+email:string;
+};
 
-export default function Home() {
 
+export default   function  Home() {
+  const params = useParams();
+ const idusuario = params.usuarioid.toString()
+  const usuario =  getUsuarioPorId(idusuario);
+  console.log(usuario);
+  
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    
+    defaultValues:{
+        nome: "",
+        email: "",
+      }
   });
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) =>{
-   alert("oi");
-   // let data1=(JSON.stringify(data));
-   // const data2 = JSON.parse(data1);
-    
-    
-   // axios.post('http://localhost:3031/usuarios',data);
-  
-    
+     await axios.post('http://localhost:3031/usuarios',JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json'
+      } });
+       alert("usuario criado com sucesso");
+        router.refresh();
+        router.push("/usuarios");
   }
 
   const onError: SubmitErrorHandler<FormData> = (errors) => console.log(errors);
 
-  // console.log(register("name"));
+ 
 
   return (
     <div className="isolate bg-white px-6 py-2 sm:py-4 lg:px-8">
+     
       
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-emerald-900 sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Criar Novo
         </h2>
       </div>
@@ -50,7 +64,7 @@ export default function Home() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("nome", {
+                {...register('nome',{
                   required: "Nome é requerido.",
                   minLength: {
                     value: 10,
@@ -78,7 +92,7 @@ export default function Home() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("email", {
+                {...register('email',{
                   required: "email é requerido.",
                   minLength: {
                     value: 10,

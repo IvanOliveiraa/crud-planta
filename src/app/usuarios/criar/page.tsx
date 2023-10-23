@@ -1,15 +1,16 @@
 "use client";
 import axios from 'axios'
-import { stringify } from 'node:querystring';
-import { json } from 'node:stream/consumers';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
 
 type FormData = {
 nome:string;
 email:string;
 };
 
+
 export default function Home() {
+  
 
   const {
     handleSubmit,
@@ -21,21 +22,21 @@ export default function Home() {
         email: "",
       }
   });
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) =>{
      await axios.post('http://localhost:3031/usuarios',JSON.stringify(data), {
       headers: {
-        // Overwrite Axios's automatically set Content-Type
         'Content-Type': 'application/json'
       } });
-   //  await console.log(JSON.stringify(data));
-    
-    
+       alert("usuario criado com sucesso");
+        router.refresh();
+        router.push("/usuarios");
   }
 
   const onError: SubmitErrorHandler<FormData> = (errors) => console.log(errors);
 
-  // console.log(register("name"));
+ 
 
   return (
     <div className="isolate bg-white px-6 py-2 sm:py-4 lg:px-8">
