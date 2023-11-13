@@ -9,31 +9,36 @@ nome:string;
 email:string;
 };
 
-
 export default   function  Home() {
-  const params = useParams();
- const idusuario = params.usuarioid.toString()
-  const usuario =  getUsuarioPorId(idusuario);
-  console.log(usuario);
+  
+  
+const params = useParams();
+ const idusuario = params.usuarioid.toString();
+
+ const getusu = async (idusuario:string) => {
+  const response = await fetch(`http://localhost:3031/usuarios/${idusuario}`);
+  const usuario = await response.json();
+  return usuario
+};
+  
+  console.log();
   
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    defaultValues:{
-        nome: "",
-        email: "",
-      }
+    defaultValues: async () => getUsuarioPorId(idusuario),
+      
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) =>{
-     await axios.post('http://localhost:3031/usuarios',JSON.stringify(data), {
+     await axios.put(`http://localhost:3031/usuarios/${idusuario}`,JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json'
       } });
-       alert("usuario criado com sucesso");
+       alert("Usuário Atualizado com sucesso");
         router.refresh();
         router.push("/usuarios");
   }
@@ -67,8 +72,8 @@ export default   function  Home() {
                 {...register('nome',{
                   required: "Nome é requerido.",
                   minLength: {
-                    value: 10,
-                    message: "Nome precisa ter pelo menos 10 caracteres",
+                    value: 5,
+                    message: "Nome precisa ter pelo menos 5 caracteres",
                   },
                 })}
                 type="text"

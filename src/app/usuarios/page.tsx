@@ -1,8 +1,8 @@
 
 import { getUsuarios } from "./services/get-usuarios";
 import Link from "next/link";
-import { IoEye, IoPencil, IoTrashBin } from "react-icons/io5";
-import Deleteusuario from "./deleteUsuario";
+import { IoEye, IoPencil } from "react-icons/io5";
+import DeleteUser from "./deletarUsuario";
 
 
 export default async function PaginaUsuarios() {
@@ -35,10 +35,8 @@ export default async function PaginaUsuarios() {
                <Link href={`/usuarios/criar/${user.id}`}>
                  <IoPencil className=" mx-1 text-red-800"/>
                </Link>
-               <Link href='#' >
-                 <IoTrashBin className=" mx-1 text-red-800"/>
-               </Link>
-               <Deleteusuario {...user} />
+               <DeleteUser {...user} />
+               
             </td>
             
         </tr>

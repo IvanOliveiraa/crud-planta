@@ -22,13 +22,8 @@
     },
     {
       "id": 6,
-      "nome": "GUILHERME",
+      "nome": "GUILHERME ",
       "email": "GUILHERME@gmail.com"
-    },
-    {
-      "nome": "IVAN",
-      "email": "FERNANDABARBOSAFBN00@GMAIL.COM",
-      "id": 7
     }
   ],
   "hardwares": [
@@ -54,19 +49,6 @@
     }
   ],
   "plantas": [
-    {
-      "id": 1,
-      "hardware": 1,
-      "usuario": "jose",
-      "NOME_PLANTA": "GIRASSOL",
-      "BOMBA_STATUS": "0",
-      "REGA_TEMPO": 5,
-      "UMIDADE": 90,
-      "REGAS": [
-        "2023-25-9 13:50:55",
-        "2023-20-9 16:30:55"
-      ]
-    },
     {
       "id": 2,
       "hardware": 2,
@@ -120,7 +102,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "hardware": 4,
       "usuario": "MARIA",
       "NOME_PLANTA": "GIRASSOL",
@@ -131,6 +113,15 @@
         "2023-25-9 17:50:55",
         "2023-20-9 16:34:55"
       ]
+    },
+    {
+      "NOME_PLANTA": "alecrim",
+      "usuario": "MARIA",
+      "hardware": "2",
+      "BOMBA_STATUS": true,
+      "REGA_TEMPO": "5",
+      "UMIDADE": "87",
+      "id": 8
     }
   ]
 }

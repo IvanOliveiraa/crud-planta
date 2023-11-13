@@ -15,7 +15,9 @@ export default function RemoveBtn( usuarioid :string ) {
       });
 
       if (res.ok) {
+        alert("Usuario Deletado com sucesso");
         router.refresh();
+        router.push("/usuarios");
       }
     }
   };
