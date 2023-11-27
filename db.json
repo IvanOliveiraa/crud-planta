@@ -1,11 +1,6 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "nome": "JOSE",
-      "email": "jose@gmail.com"
-    },
-    {
       "id": 2,
       "nome": "CARLOS",
       "email": "CARLOS@gmail.com"
@@ -27,20 +22,13 @@
     },
     {
       "id": 6,
-      "nome": "GUILHERME",
+      "nome": "GUILHERME ",
       "email": "GUILHERME@gmail.com"
     },
     {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
+      "nome": "Ivan ",
+      "email": "ivosn9@gmail.com",
       "id": 7
-    },
-    {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
-      "id": 8
-    },
-    {
-      "{\"nome\":\"ivan oliveira de souza\",\"email\":\"recep@gmail.com\"}": "",
-      "id": 9
     }
   ],
   "hardwares": [
@@ -66,19 +54,6 @@
     }
   ],
   "plantas": [
-    {
-      "id": 1,
-      "hardware": 1,
-      "usuario": "jose",
-      "NOME_PLANTA": "GIRASSOL",
-      "BOMBA_STATUS": "0",
-      "REGA_TEMPO": 5,
-      "UMIDADE": 90,
-      "REGAS": [
-        "2023-25-9 13:50:55",
-        "2023-20-9 16:30:55"
-      ]
-    },
     {
       "id": 2,
       "hardware": 2,
@@ -132,7 +107,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "hardware": 4,
       "usuario": "MARIA",
       "NOME_PLANTA": "GIRASSOL",
