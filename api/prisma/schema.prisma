@@ -11,7 +11,11 @@ datasource db {
 }
 
 model user {
+<<<<<<< HEAD
   id Int @id @default(autoincrement())
+=======
+  id String @id @default(autoincrement())
+>>>>>>> e76654b085688063d99c6a35ed610a40c8f6789a
   name String
   email String
   password String
@@ -19,4 +23,14 @@ model user {
 
 }
 
+<<<<<<< HEAD
 
+=======
+model foto {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  caminho  String
+  criadoem DateTime @default(now())
+
+}
+>>>>>>> e76654b085688063d99c6a35ed610a40c8f6789a

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+<<<<<<< HEAD
   "engines": {
     "node": "18.17.0"
   },
@@ -10,6 +11,10 @@
     "dev": "tsx src/server.ts" ,
     "build": "tsup src" ,
     "start": "node dist/server.js"
+=======
+  "scripts": {
+    "dev": "tsx src/server.ts"
+>>>>>>> e76654b085688063d99c6a35ed610a40c8f6789a
   },
   "keywords": [],
   "author": "",
