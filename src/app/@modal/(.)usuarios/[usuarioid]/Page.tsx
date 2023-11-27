@@ -1,5 +1,5 @@
+import { getUsuarioPorId } from '../../../usuarios/services/get-usuario-por-id';
 import { useParams } from 'next/navigation'
-import { getUsuarioPorId } from "../services/get-usuario-por-id";
 
 
 export default async function PaginaUsuario({
@@ -8,7 +8,7 @@ export default async function PaginaUsuario({
 params:{usuarioid : string};
 }) {
     console.log(params)
-    const usuario = await getUsuarioPorId(params.usuarioid);
+    const usuario = await  getUsuarioPorId(params.usuarioid);
 
     return(
     <>

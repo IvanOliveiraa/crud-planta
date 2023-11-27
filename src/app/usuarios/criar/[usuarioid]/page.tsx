@@ -1,54 +1,58 @@
 "use client";
 import axios from 'axios'
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter,useParams } from 'next/navigation';
+import {getUsuarioPorId} from './../../services/get-usuario-por-id'
 
 type FormData = {
-  nome: string;
-  email: string;
+nome:string;
+email:string;
 };
 
-export default function Home() {
+export default   function  Home() {
+  
+  
+const params = useParams();
+ const idusuario = params.usuarioid.toString();
 
+ const getusu = async (idusuario:string) => {
+  const response = await fetch(`http://localhost:3031/usuarios/${idusuario}`);
+  const usuario = await response.json();
+  return usuario
+};
+  
+  console.log();
+  
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    defaultValues:{
-        nome: "",
-        email: "",
-      },
+    defaultValues: async () => getUsuarioPorId(idusuario),
+      
   });
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) =>{
-    alert(JSON.stringify(data));
-    let data1=(JSON.stringify(data));
-    const data2 = JSON.parse(data1)
-    axios.post('http://localhost:3031/usuarios',data2);
-  
-    
+     await axios.put(`http://localhost:3031/usuarios/${idusuario}`,JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json'
+      } });
+       alert("Usuário Atualizado com sucesso");
+        router.refresh();
+        router.push("/usuarios");
   }
 
   const onError: SubmitErrorHandler<FormData> = (errors) => console.log(errors);
 
-  // console.log(register("name"));
+ 
 
   return (
     <div className="isolate bg-white px-6 py-2 sm:py-4 lg:px-8">
-      <div
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-        aria-hidden="true"
-      >
-        <div
-          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        />
-      </div>
+     
+      
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-emerald-900 sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Criar Novo
         </h2>
       </div>
@@ -65,11 +69,11 @@ export default function Home() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("nome", {
+                {...register('nome',{
                   required: "Nome é requerido.",
                   minLength: {
-                    value: 10,
-                    message: "Nome precisa ter pelo menos 10 caracteres",
+                    value: 5,
+                    message: "Nome precisa ter pelo menos 5 caracteres",
                   },
                 })}
                 type="text"
@@ -93,7 +97,7 @@ export default function Home() {
             </label>
             <div className="mt-2.5">
               <input
-                {...register("email", {
+                {...register('email',{
                   required: "email é requerido.",
                   minLength: {
                     value: 10,
