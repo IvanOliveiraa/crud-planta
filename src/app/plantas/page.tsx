@@ -1,44 +1,63 @@
-import { getPlantas } from "./services/get-plantas"
+import { getPlantas } from "./services/get-plantas";
 import Image from "next/image";
 import Link from "next/link";
 import { IoEye, IoPencil } from "react-icons/io5";
 import DeletePlanta from "./deletarPlanta";
 
 export default async function PaginaPlantas() {
-    const plantas = await getPlantas();
-    return(
+  const plantas = await getPlantas();
+  return (
     <>
-    
-    <h2>Plantas:</h2>
-    
-    <div className="flex mb-6 w-100 justify-center items-center p-4 bg-gradient-to-b from-emerald-900 via-emerald-600 to-emerald-900 rounded-[15px] border border-green-600 ">
-            {plantas.map((planta: any )=>(
-                <div key={planta.id} className=" mx-2 text-center justify-center justify-items-center  bg-emerald-900 border border-emrald-600 rounded-lg shadow flex-1">
-           <h1 className="text-emerald-400 text-bold">{planta.NOME_PLANTA}</h1> 
-            <Link href={`/plantas/${planta.id}`} className="mx-auto"key={planta.id}>
-                <Image src="/planta.png"
-      width={150}
-      height={150}
-      alt="Picture of the author"/>
-                    
-                    
-                </Link>
-               <div className="flex p-3 items-center">
-                <Link href={`/plantas/${planta.id}`}>
-                 <IoEye className=" mx-1 text-white" />
-               </Link>
-               <Link href={`/plantas/criar/${planta.id}`}>
-                 <IoPencil className=" mx-1 text-white"/>
-               </Link>
-               <DeletePlanta {...planta} /></div>
-                </div>
-                ))}
-        
-        
+      <h2>Plantas:</h2>
 
-    </div>
-    <Link  className="block mt-3 w-full rounded-md bg-emerald-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
-      href="plantas/criar"> criar nova</Link>
-    </>);
-    
+      <div className="flex mb-6 w-100  flex-wrap auto-cols-max content-start p-4 gap-4  bg-gradient-radial to-verde-900 from-verde-700   rounded-[15px] shadow-xl ">
+        {plantas.map((planta: any) => (
+          <div
+            key={planta.id}
+            className=" mx-2 w-32  text-center justify-center justify-items-center bg-gradient-radial to-verde-900 from-verde-400  border-2 border-verde-400 rounded-lg shadow max-w-xs flex-1"
+          >
+            <Link
+              href={`/plantas/${planta.id}`}
+              className="mx-auto"
+              key={planta.id}
+            >
+              <Image
+                src="/planta.png"
+                width={150}
+                height={150}
+                alt="Picture of the author"
+                className=" w-full"
+              />
+            </Link>
+            <h1 className="text-white text-bold">{planta.NOME_PLANTA}</h1>
+            <div className="flex p-3 justify-center space-x-1 items-center">
+              <Link
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                href={`/plantas/${planta.id}`}
+              >
+                <IoEye className=" mx-1 text-white" />
+              </Link>
+              <Link
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                href={`/plantas/criar/${planta.id}`}
+              >
+                <IoPencil className=" mx-1 text-white" />
+              </Link>
+              <DeletePlanta
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                {...planta}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <Link
+        className="block mt-3 w-full rounded-md bg-emerald-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        href="plantas/criar"
+      >
+        {" "}
+        criar nova
+      </Link>
+    </>
+  );
 }

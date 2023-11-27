@@ -4,16 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoTrashBin } from "react-icons/io5";
 
-
 type Planta = {
   id: number;
-  hardware: 4,
-      usuario: string,
-      NOME_PLANTA:string,
-      BOMBA_STATUS:string,
-      REGA_TEMPO: number,
-      UMIDADE: number,
-      REGAS: any[]
+  hardware: 4;
+  usuario: string;
+  NOME_PLANTA: string;
+  BOMBA_STATUS: string;
+  REGA_TEMPO: number;
+  UMIDADE: number;
+  REGAS: any[];
 };
 
 export default function DeletePlanta(planta: Planta) {
@@ -32,15 +31,13 @@ export default function DeletePlanta(planta: Planta) {
     router.refresh();
   }
 
-  
-
   return (
-              <button
-                type="button"
-                onClick={() => handleDelete(planta.id)}
-                className="btn btn-primary"
-              >
-               <IoTrashBin className=" mx-1  text-white"/>
-              </button>
+    <button
+      type="button"
+      onClick={() => handleDelete(planta.id)}
+      className="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 border-b-2 border-red-700 hover:border-red-800 rounded"
+    >
+      <IoTrashBin className=" mx-1  text-white" />
+    </button>
   );
 }
