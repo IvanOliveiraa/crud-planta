@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoEye, IoPencil } from "react-icons/io5";
 import DeletePlanta from "./deletarPlanta";
+import "leaflet/dist/leaflet.css";
 
 export default async function PaginaPlantas() {
   const plantas = await getPlantas();
@@ -10,7 +11,7 @@ export default async function PaginaPlantas() {
     <>
       <h2>Plantas:</h2>
 
-      <div className="flex mb-6 w-100  flex-wrap auto-cols-max content-start p-4 gap-4  bg-gradient-radial to-verde-900 from-verde-700   rounded-[15px] shadow-xl ">
+      <div className="flex mb-6 w-100  flex-wrap auto-cols-max content-start p-4 gap-4 bg-verde-250   rounded-[15px] shadow-xl ">
         {plantas.map((planta: any) => (
           <div
             key={planta.id}
@@ -30,21 +31,21 @@ export default async function PaginaPlantas() {
               />
             </Link>
             <h1 className="text-white text-bold">{planta.NOME_PLANTA}</h1>
-            <div className="flex p-3 justify-center space-x-1 items-center">
+            <div className="flex text-xl p-3 justify-center space-x-1 items-center">
               <Link
-                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold p-1  border-b-4 border-verde-700 hover:border-verde-500 rounded"
                 href={`/plantas/${planta.id}`}
               >
                 <IoEye className=" mx-1 text-white" />
               </Link>
               <Link
-                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold p-1  border-b-4 border-verde-300 hover:border-verde-400 rounded"
                 href={`/plantas/criar/${planta.id}`}
               >
                 <IoPencil className=" mx-1 text-white" />
               </Link>
               <DeletePlanta
-                className="bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded"
+                className="bg-verde-250 hover:bg-verde-300 text-white font-bold p-1  border-b-4 border-verde-700 hover:border-verde-500 rounded"
                 {...planta}
               />
             </div>
