@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IoEye, IoPencil } from "react-icons/io5";
 import DeletePlanta from "./deletarPlanta";
 import "leaflet/dist/leaflet.css";
+import { VT323 } from "next/font/google";
 
 export default async function PaginaPlantas() {
   const plantas = await getPlantas();
@@ -30,7 +31,9 @@ export default async function PaginaPlantas() {
                 className=" w-full"
               />
             </Link>
-            <h1 className="text-white text-bold">{planta.NOME_PLANTA}</h1>
+            <h1 className="text-white text-2xl font-VT323 ">
+              {planta.NOME_PLANTA}
+            </h1>
             <div className="flex text-xl p-3 justify-center space-x-1 items-center">
               <Link
                 className="bg-verde-250 hover:bg-verde-300 text-white font-bold p-1  border-b-4 border-verde-700 hover:border-verde-500 rounded"

@@ -19,7 +19,9 @@ export default async function PaginaPlanta({
   params: { plantaid: string };
 }) {
   console.log(params);
+
   const planta = await getPlantaPorId(params.plantaid);
+  console.log(planta.LOC);
 
   return (
     <>
@@ -40,11 +42,11 @@ export default async function PaginaPlanta({
             </button>
           </div>
         </div>
-        <div className="flex-1 w-full md:w-auto">
-          <div className="flex-1 w-full md:w-auto  p-8 bg-gradient-radial space-y-2  to-verde-900 rounded-[15px]  from-verde-400 ">
+        <div className="flex-1 min-w-[50%] md:w-auto">
+          <div className="  flex-1 w-full md:w-auto  p-8 bg-gradient-radial space-y-2  to-verde-900 rounded-[15px]  from-verde-400 ">
             <Mapcomponent initialPosition={position} />
             <h3> Id: {params.plantaid}</h3>
-            <h2> Nome: {planta.NOME_PLANTA}</h2>
+            <h2 className=""> Nome: {planta.NOME_PLANTA}</h2>
             <h3> UMIDADE: {planta.UMIDADE}</h3>
             <h3> STAUS: {planta.BOMBA_STATUS}</h3>
             <h3> TEMPO DE REGA: {planta.REGA_TEMPO}</h3>
