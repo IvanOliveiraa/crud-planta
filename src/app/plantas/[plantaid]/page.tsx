@@ -48,7 +48,6 @@ export default async function PaginaPlanta({
             <h3> Id: {params.plantaid}</h3>
             <h2 className=""> Nome: {planta.NOME_PLANTA}</h2>
             <h3> UMIDADE: {planta.UMIDADE}</h3>
-            <h3> STAUS: {planta.BOMBA_STATUS}</h3>
             <h3> TEMPO DE REGA: {planta.REGA_TEMPO}</h3>
             <h3> Ultima rega: {planta.REGAS[0]}</h3>
           </div>
