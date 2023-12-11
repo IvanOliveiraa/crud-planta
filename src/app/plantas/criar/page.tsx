@@ -2,6 +2,7 @@
 import axios from "axios";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 type FormData = {
   id: number | string;
@@ -13,8 +14,24 @@ type FormData = {
   UMIDADE: number | string;
   REGAS: any[];
 };
+type IUser = {
+  id: number | string;
+  nome: string;
+};
 
 export default function Home() {
+  const getusu = async (idplanta: string) => {
+    const response = await fetch(`http://localhost:8080/plantas/${idplanta}`);
+    const planta = await response.json();
+    return planta[0];
+  };
+  const getselectusers = async () => {
+    const response = await fetch(`http://localhost:8080/selectusuarios/`);
+    const usuarios = await response.json();
+    return usuarios[0];
+  };
+  getselectusers();
+
   const {
     handleSubmit,
     register,
@@ -25,23 +42,43 @@ export default function Home() {
       usuario: "",
       hardware: "",
       REGA_TEMPO: "",
-      UMIDADE: "",
     },
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    await axios.post("http://localhost:3031/plantas", JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios.post(
+      "http://localhost:8080/planta/insert",
+      JSON.stringify(data),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(JSON.stringify(data));
     alert("planta criada com sucesso");
     router.refresh();
     router.push("/plantas");
   };
 
   const onError: SubmitErrorHandler<FormData> = (errors) => console.log(errors);
+
+  const [usuarios, setUsuarios] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/selectusuarios/");
+        const usuarios = await response.json();
+        setUsuarios(usuarios);
+      } catch (error) {
+        console.error("Erro ao buscar usuários:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="isolate bg-white px-6 py-2 sm:py-4 lg:px-8">
@@ -129,25 +166,25 @@ export default function Home() {
 
         <div>
           <label
-            htmlFor="name"
+            htmlFor="usuario"
             className="block text-sm font-semibold leading-6 text-gray-900"
           >
             USUARIO
           </label>
           <div className="mt-2.5">
-            <input
+            <select
               {...register("usuario", {
-                required: "usuario é requerido.",
-                minLength: {
-                  value: 4,
-                  message: "usuario precisa ter pelo menos 5 caracteres",
-                },
+                required: "Usuário é requerido.",
               })}
-              type="text"
-              name="usuario"
-              autoComplete="given-name"
               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
-            />
+            >
+              <option value="">Selecione um usuário</option>
+              {usuarios.map((user: IUser) => (
+                <option key={user.id} value={user.id}>
+                  {user.nome}
+                </option>
+              ))}
+            </select>
             {errors?.usuario && (
               <span className="text-red-700">{errors.usuario.message}</span>
             )}

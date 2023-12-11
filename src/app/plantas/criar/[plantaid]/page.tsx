@@ -7,12 +7,8 @@ import { getPlantaPorId } from "../../services/get-planta-por-id";
 type FormData = {
   id: number | string;
   hardware: number | string;
-  usuario: string;
   NOME_PLANTA: string;
-  BOMBA_STATUS: boolean;
   REGA_TEMPO: number | string;
-  UMIDADE: number | string;
-  REGAS: any[];
 };
 
 export default function Home() {
@@ -36,7 +32,7 @@ export default function Home() {
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     await axios.put(
-      `http://localhost:8080/plantas/${idplanta}`,
+      `http://localhost:8080/planta/update/${idplanta}`,
       JSON.stringify(data),
       {
         headers: {
@@ -130,33 +126,6 @@ export default function Home() {
             />
             {errors?.REGA_TEMPO && (
               <span className="text-red-700">{errors.REGA_TEMPO.message}</span>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-semibold leading-6 text-gray-900"
-          >
-            USUARIO
-          </label>
-          <div className="mt-2.5">
-            <input
-              {...register("usuario", {
-                required: "usuario é requerido.",
-                minLength: {
-                  value: 4,
-                  message: "usuario precisa ter pelo menos 5 caracteres",
-                },
-              })}
-              type="text"
-              name="usuario"
-              autoComplete="given-name"
-              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
-            />
-            {errors?.usuario && (
-              <span className="text-red-700">{errors.usuario.message}</span>
             )}
           </div>
         </div>

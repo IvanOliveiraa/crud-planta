@@ -138,6 +138,14 @@
         "2023-25-9 17:50:55",
         "2023-20-9 16:34:55"
       ]
+    },
+    {
+      "NOME_PLANTA": "Ivan Oliveira de",
+      "usuario": "6",
+      "hardware": "5",
+      "REGA_TEMPO": "5",
+      "UMIDADE": "",
+      "id": 8
     }
   ]
 }

@@ -23,7 +23,7 @@ export default function DeletePlanta(planta: Planta) {
   async function handleDelete(idplanta: number) {
     setIsMutating(true);
 
-    await fetch(`http://localhost:8080/plantas/${idplanta}`, {
+    await fetch(`http://localhost:8080/planta/${idplanta}`, {
       method: "DELETE",
     });
     alert("Planta Deletada com sucesso!");
