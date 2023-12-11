@@ -41,23 +41,29 @@ export default async function PaginaPlanta({
   const { data = "", hora = "" } = obterDataEHora(
     ultima_rega_formatada || new Date()
   );
-
-  console.log(`Data: ${data}, Hora: ${hora}`);
+  let src = "/WIDGET-2.png";
+  if (planta.UMIDADE < 40) {
+    src = "/WIDGET-1.png";
+  } else if (planta.UMIDADE > 80) {
+    src = "/WIDGET-3.png";
+  }
+  console.log(src);
 
   return (
     <>
       <div className="w-100 flex mb-6   flex-wrap auto-cols-max content-start p-4 gap-4 text-white justify-center items-center  bg-verde-250 border-2 rounded-[15px]  ">
         <div className=" p-8 h-full space-y-4  md:w-auto flex flex-col justify-center items-center max-w-2xl bg-gradient-radial  to-verde-900 rounded-[15px]  from-verde-400 ">
+          <h2 className="text-4xl mx-0 px-0 text-verde-100 font-VT323">
+            {planta.NOME_PLANTA}
+          </h2>
           <Image
-            src="/WIDGET.png"
+            src={src}
             width={350}
             height={350}
             alt="Picture of the author"
           />
+
           <div className="justify-center space-x-3 items-center">
-            <button className="text-5xl bg-verde-250 hover:bg-verde-300 text-white font-bold py-2 px-4 border-b-4 border-verde-700 hover:border-verde-500 rounded-[15px]">
-              <MdAddPhotoAlternate />
-            </button>
             <RegarPlanta {...planta} />
           </div>
         </div>
@@ -67,8 +73,8 @@ export default async function PaginaPlanta({
 
             <h2 className=""> Nome: {planta.NOME_PLANTA}</h2>
             <h3> usuario: {planta.nome_usuario}</h3>
-            <h3> UMIDADE: {planta.UMIDADE}</h3>
-            <h3> TEMPO DE REGA: {planta.REGA_TEMPO}</h3>
+            <h3> UMIDADE: {planta.UMIDADE}%</h3>
+            <h3> TEMPO DE REGA: {planta.REGA_TEMPO} segundos</h3>
             <h3>
               Ultima rega: {data} as {hora}
             </h3>
