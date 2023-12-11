@@ -52,6 +52,12 @@ const MapComponent: React.FC<MapComponentProps> = ({ initialPosition }) => {
     iconAnchor: [16, 32], // Posição do ponto de ancoragem em relação ao ícone
     popupAnchor: [0, -32], // Posição do ponto de ancoragem do popup em relação ao ícone
   });
+  const customIcon2 = new L.Icon({
+    iconUrl: "/markerme.png", // Substitua pelo caminho real do seu ícone
+    iconSize: [22, 40], // Tamanho do ícone
+    iconAnchor: [16, 32], // Posição do ponto de ancoragem em relação ao ícone
+    popupAnchor: [0, -32], // Posição do ponto de ancoragem do popup em relação ao ícone
+  });
   return (
     <div className=" border-2 rounded-[15px]">
       <MapContainer
@@ -64,6 +70,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ initialPosition }) => {
         <Marker icon={customIcon} position={initialPosition}>
           <Popup>ultima posição publicada da planta</Popup>
         </Marker>
+        <Marker icon={customIcon2} position={[-8.745667, -63.864312]}></Marker>
       </MapContainer>
     </div>
   );

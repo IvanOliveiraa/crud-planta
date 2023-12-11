@@ -41,7 +41,6 @@ export default function Home() {
       NOME_PLANTA: "",
       usuario: "",
       hardware: "",
-      REGA_TEMPO: "",
     },
   });
   const router = useRouter();
@@ -137,29 +136,6 @@ export default function Home() {
             />
             {errors?.hardware && (
               <span className="text-red-700">{errors.hardware.message}</span>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-semibold leading-6 text-gray-900"
-          >
-            REGA_TEMPO
-          </label>
-          <div className="mt-2.5">
-            <input
-              {...register("REGA_TEMPO", {
-                required: "REGA_TEMPO é requerido.",
-              })}
-              type="number"
-              name="REGA_TEMPO"
-              autoComplete="given-name"
-              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
-            />
-            {errors?.REGA_TEMPO && (
-              <span className="text-red-700">{errors.REGA_TEMPO.message}</span>
             )}
           </div>
         </div>
