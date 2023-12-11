@@ -12,7 +12,6 @@ type Planta = {
   BOMBA_STATUS: string;
   REGA_TEMPO: number;
   UMIDADE: number;
-  REGAS: any[];
 };
 
 export default function DeletePlanta(planta: Planta) {
@@ -24,7 +23,7 @@ export default function DeletePlanta(planta: Planta) {
   async function handleDelete(idplanta: number) {
     setIsMutating(true);
 
-    await fetch(`http://localhost:3031/plantas/${idplanta}`, {
+    await fetch(`http://localhost:8080/plantas/${idplanta}`, {
       method: "DELETE",
     });
     alert("Planta Deletada com sucesso!");

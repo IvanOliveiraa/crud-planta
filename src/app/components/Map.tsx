@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useEffect, useRef } from "react";
 import L from "leaflet";
 
-type Position = [number, number];
+type Position = [any, any];
 
 interface MapComponentProps {
   initialPosition: Position;
@@ -60,14 +60,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ initialPosition }) => {
         style={{ width: "100%", height: "400px" }}
         ref={mapRef}
       >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker icon={customIcon} position={initialPosition}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
+          <Popup>ultima posição publicada da planta</Popup>
         </Marker>
       </MapContainer>
     </div>

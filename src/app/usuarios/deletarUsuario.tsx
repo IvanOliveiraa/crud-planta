@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoTrashBin } from "react-icons/io5";
 
-
 type Usuario = {
   id: number;
   nome: string;
@@ -20,22 +19,20 @@ export default function DeleteUser(user: Usuario) {
   async function handleDelete(productId: number) {
     setIsMutating(true);
 
-    await fetch(`http://localhost:3031/usuarios/${user.id}`, {
+    await fetch(`http://localhost:8080/usuario/${user.id}`, {
       method: "DELETE",
     });
     alert("Usuário Deletado com sucesso!");
     router.refresh();
   }
 
-  
-
   return (
-              <button
-                type="button"
-                onClick={() => handleDelete(user.id)}
-                className="btn btn-primary"
-              >
-               <IoTrashBin className=" mx-1 text-red-800"/>
-              </button>
+    <button
+      type="button"
+      onClick={() => handleDelete(user.id)}
+      className="btn btn-primary"
+    >
+      <IoTrashBin className=" mx-1 text-red-800" />
+    </button>
   );
 }

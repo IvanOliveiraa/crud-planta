@@ -7,7 +7,7 @@ import Mapcomponent from "@/app/components/Map";
 import "leaflet/dist/leaflet.css";
 
 import dynamic from "next/dynamic";
-type Position = [number, number];
+type Position = [any, any];
 
 const position: Position = [-8.745842214870901, -63.85542867750755];
 
@@ -21,7 +21,6 @@ export default async function PaginaPlanta({
   console.log(params);
 
   const planta = await getPlantaPorId(params.plantaid);
-  console.log(planta.LOC);
 
   return (
     <>
@@ -44,12 +43,11 @@ export default async function PaginaPlanta({
         </div>
         <div className="flex-1 min-w-[50%] md:w-auto">
           <div className="  flex-1 w-full md:w-auto  p-8 bg-gradient-radial space-y-2  to-verde-900 rounded-[15px]  from-verde-400 ">
-            <Mapcomponent initialPosition={position} />
+            <Mapcomponent initialPosition={[planta.LOC.x, planta.LOC.y]} />
             <h3> Id: {params.plantaid}</h3>
             <h2 className=""> Nome: {planta.NOME_PLANTA}</h2>
             <h3> UMIDADE: {planta.UMIDADE}</h3>
             <h3> TEMPO DE REGA: {planta.REGA_TEMPO}</h3>
-            <h3> Ultima rega: {planta.REGAS[0]}</h3>
           </div>
         </div>
       </div>

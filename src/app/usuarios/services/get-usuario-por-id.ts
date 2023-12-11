@@ -1,5 +1,5 @@
-export async function getUsuarioPorId(id: string) {
-    const response = await fetch(`http://localhost:3031/usuarios/${id}`);
-    const usuario = await response.json();
-    return usuario ;
+export async function getUsuarioPorId(id: number | string) {
+  const response = await fetch(`http://localhost:8080/usuario/${id}`);
+  const usuario = await response.json();
+  return usuario[0];
 }

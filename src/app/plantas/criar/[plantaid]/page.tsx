@@ -1,7 +1,8 @@
 "use client";
 import axios from "axios";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { getPlantaPorId } from "../../services/get-planta-por-id";
 
 type FormData = {
   id: number | string;
@@ -15,28 +16,35 @@ type FormData = {
 };
 
 export default function Home() {
+  const params = useParams();
+  const idplanta = params.plantaid;
+
+  const getusu = async (idplanta: string) => {
+    const response = await fetch(`http://localhost:8080/plantas/${idplanta}`);
+    const planta = await response.json();
+    return planta[0];
+  };
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    defaultValues: {
-      NOME_PLANTA: "",
-      usuario: "",
-      hardware: "",
-      REGA_TEMPO: "",
-      UMIDADE: "",
-    },
+    defaultValues: async () => getPlantaPorId(idplanta.toString()),
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    await axios.post("http://localhost:3031/plantas", JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    alert("planta criada com sucesso");
+    await axios.put(
+      `http://localhost:8080/plantas/${idplanta}`,
+      JSON.stringify(data),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    alert("Usuário Atualizado com sucesso");
     router.refresh();
     router.push("/plantas");
   };
@@ -103,7 +111,6 @@ export default function Home() {
             )}
           </div>
         </div>
-
         <div>
           <label
             htmlFor="name"
